@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Material 3 Dynamic Colors -->
+    <color name="seed">#6750A4</color>
+    
+    <!-- Light Theme Colors -->
+    <color name="md_theme_light_primary">#6750A4</color>
+    <color name="md_theme_light_onPrimary">#FFFFFF</color>
+    <color name="md_theme_light_primaryContainer">#EADDFF</color>
+    <color name="md_theme_light_onPrimaryContainer">#21005D</color>
+    <color name="md_theme_light_secondary">#625B71</color>
+    <color name="md_theme_light_onSecondary">#FFFFFF</color>
+    <color name="md_theme_light_secondaryContainer">#E8DEF8</color>
+    <color name="md_theme_light_onSecondaryContainer">#1D192B</color>
+    <color name="md_theme_light_tertiary">#7D5260</color>
+    <color name="md_theme_light_onTertiary">#FFFFFF</color>
+    <color name="md_theme_light_tertiaryContainer">#FFD8E4</color>
+    <color name="md_theme_light_onTertiaryContainer">#31111D</color>
+    <color name="md_theme_light_error">#BA1A1A</color>
+    <color name="md_theme_light_onError">#FFFFFF</color>
+    <color name="md_theme_light_errorContainer">#FFDAD6</color>
+    <color name="md_theme_light_onErrorContainer">#410002</color>
+    <color name="md_theme_light_background">#FFFBFE</color>
+    <color name="md_theme_light_onBackground">#1C1B1F</color>
+    <color name="md_theme_light_surface">#FFFBFE</color>
+    <color name="md_theme_light_onSurface">#1C1B1F</color>
+    <color name="md_theme_light_surfaceVariant">#E7E0EC</color>
+    <color name="md_theme_light_onSurfaceVariant">#49454F</color>
+    <color name="md_theme_light_outline">#79747E</color>
+    <color name="md_theme_light_outlineVariant">#CAC4D0</color>
+    <color name="md_theme_light_scrim">#000000</color>
+    <color name="md_theme_light_inverseSurface">#313033</color>
+    <color name="md_theme_light_inverseOnSurface">#F4EFF4</color>
+    <color name="md_theme_light_inversePrimary">#D0BCFF</color>
+    <color name="md_theme_light_shadow">#000000</color>
+    <color name="md_theme_light_surfaceTint">#6750A4</color>
+    
+    <!-- Dark Theme Colors -->
+    <color name="md_theme_dark_primary">#D0BCFF</color>
+    <color name="md_theme_dark_onPrimary">#381E72</color>
+    <color name="md_theme_dark_primaryContainer">#4F378B</color>
+    <color name="md_theme_dark_onPrimaryContainer">#EADDFF</color>
+    <color name="md_theme_dark_secondary">#CCC2DC</color>
+    <color name="md_theme_dark_onSecondary">#332D41</color>
+    <color name="md_theme_dark_secondaryContainer">#4A4458</color>
+    <color name="md_theme_dark_onSecondaryContainer">#E8DEF8</color>
+    <color name="md_theme_dark_tertiary">#EFB8C8</color>
+    <color name="md_theme_dark_onTertiary">#492532</color>
+    <color name="md_theme_dark_tertiaryContainer">#633B48</color>
+    <color name="md_theme_dark_onTertiaryContainer">#FFD8E4</color>
+    <color name="md_theme_dark_error">#FFB4AB</color>
+    <color name="md_theme_dark_onError">#690005</color>
+    <color name="md_theme_dark_errorContainer">#93000A</color>
+    <color name="md_theme_dark_onErrorContainer">#FFDAD6</color>
+    <color name="md_theme_dark_background">#0F0D13</color>
+    <color name="md_theme_dark_onBackground">#E6E0E9</color>
+    <color name="md_theme_dark_surface">#0F0D13</color>
+    <color name="md_theme_dark_onSurface">#E6E0E9</color>
+    <color name="md_theme_dark_surfaceVariant">#49454F</color>
+    <color name="md_theme_dark_onSurfaceVariant">#CAC4D0</color>
+    <color name="md_theme_dark_outline">#938F99</color>
+    <color name="md_theme_dark_outlineVariant">#49454F</color>
+    <color name="md_theme_dark_scrim">#000000</color>
+    <color name="md_theme_dark_inverseSurface">#E6E0E9</color>
+    <color name="md_theme_dark_inverseOnSurface">#322F35</color>
+    <color name="md_theme_dark_inversePrimary">#6750A4</color>
+    <color name="md_theme_dark_shadow">#000000</color>
+    <color name="md_theme_dark_surfaceTint">#D0BCFF</color>
+    
+    <!-- Enhanced Custom Colors -->
+    <color name="success_green">#00C851</color>
+    <color name="success_green_light">#4CAF50</color>
+    <color name="success_green_dark">#00A041</color>
+    <color name="error_red">#FF4444</color>
+    <color name="error_red_light">#FF6B6B</color>
+    <color name="error_red_dark">#CC0000</color>
+    <color name="warning_orange">#FF8800</color>
+    <color name="warning_orange_light">#FFB74D</color>
+    <color name="warning_orange_dark">#F57C00</color>
+    <color name="info_blue">#33B5E5</color>
+    <color name="info_blue_light">#64B5F6</color>
+    <color name="info_blue_dark">#1976D2</color>
+    
+    <!-- Premium Gradient Colors -->
+    <color name="gradient_primary_start">#667eea</color>
+    <color name="gradient_primary_end">#764ba2</color>
+    <color name="gradient_secondary_start">#f093fb</color>
+    <color name="gradient_secondary_end">#f5576c</color>
+    <color name="gradient_success_start">#11998e</color>
+    <color name="gradient_success_end">#38ef7d</color>
+    <color name="gradient_warning_start">#fc4a1a</color>
+    <color name="gradient_warning_end">#f7b733</color>
+    <color name="gradient_dark_start">#2c3e50</color>
+    <color name="gradient_dark_end">#4a6741</color>
+    
+    <!-- Glass Morphism Colors -->
+    <color name="glass_light">#80FFFFFF</color>
+    <color name="glass_dark">#40000000</color>
+    <color name="glass_border_light">#33FFFFFF</color>
+    <color name="glass_border_dark">#33000000</color>
+    
+    <!-- Shimmer Colors -->
+    <color name="shimmer_base_light">#F0F0F0</color>
+    <color name="shimmer_highlight_light">#FFFFFF</color>
+    <color name="shimmer_base_dark">#2A2A2A</color>
+    <color name="shimmer_highlight_dark">#3A3A3A</color>
+    
+    <!-- Card Colors with Elevation -->
+    <color name="card_background_light">#FFFFFF</color>
+    <color name="card_background_dark">#1E1E1E</color>
+    <color name="card_elevated_light">#FAFAFA</color>
+    <color name="card_elevated_dark">#2A2A2A</color>
+    <color name="card_shadow_light">#1A000000</color>
+    <color name="card_shadow_dark">#40000000</color>
+    
+    <!-- Status Colors -->
+    <color name="status_online">#4CAF50</color>
+    <color name="status_offline">#9E9E9E</color>
+    <color name="status_away">#FF9800</color>
+    <color name="status_busy">#F44336</color>
+    
+    <!-- Accent Colors for Categories -->
+    <color name="category_food">#FF6B35</color>
+    <color name="category_transport">#4ECDC4</color>
+    <color name="category_entertainment">#45B7D1</color>
+    <color name="category_shopping">#96CEB4</color>
+    <color name="category_health">#FFEAA7</color>
+    <color name="category_bills">#DDA0DD</color>
+    <color name="category_education">#74B9FF</color>
+    <color name="category_travel">#FD79A8</color>
+    <color name="category_other">#A29BFE</color>
+</resources>

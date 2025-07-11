@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!-- Exclude all sensitive financial data from backup -->
+    <exclude domain="sharedpref" path="BudgetWiseSecurePrefs.xml"/>
+    <exclude domain="database" />
+    <exclude domain="external" path="BudgetWise/"/>
+    <exclude domain="file" path="BudgetWise/"/>
+</full-backup-content>

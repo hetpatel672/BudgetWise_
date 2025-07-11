@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-extraction-rules>
+    <cloud-backup>
+        <!-- Exclude sensitive financial data from cloud backup -->
+        <exclude domain="sharedpref" path="BudgetWiseSecurePrefs.xml"/>
+        <exclude domain="database" />
+        <exclude domain="file" path="BudgetWise/"/>
+    </cloud-backup>
+    
+    <device-transfer>
+        <!-- Allow basic app data transfer but exclude sensitive data -->
+        <exclude domain="sharedpref" path="BudgetWiseSecurePrefs.xml"/>
+        <exclude domain="database" />
+        <exclude domain="file" path="BudgetWise/"/>
+    </device-transfer>
+</data-extraction-rules>

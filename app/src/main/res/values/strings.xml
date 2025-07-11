@@ -1,0 +1,195 @@
+<resources>
+    <string name="app_name">BudgetWise</string>
+    
+    <!-- Navigation -->
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_transactions">Transactions</string>
+    <string name="title_analytics">Analytics</string>
+    <string name="title_settings">Settings</string>
+    
+    <!-- Dashboard -->
+    <string name="total_balance">Total Balance</string>
+    <string name="monthly_spending">Monthly Spending</string>
+    <string name="your_budgets">Your Budgets</string>
+    <string name="recent_transactions">Recent Transactions</string>
+    <string name="smart_insights">💡 Smart Insights</string>
+    <string name="no_budgets_set">No budgets set</string>
+    <string name="analyzing_patterns">Analyzing your spending patterns…</string>
+    <string name="no_insights_available">No insights available</string>
+    
+    <!-- Transactions -->
+    <string name="add_transaction">Add Transaction</string>
+    <string name="edit_transaction">Edit Transaction</string>
+    <string name="description">Description</string>
+    <string name="amount">Amount</string>
+    <string name="category">Category</string>
+    <string name="date">Date</string>
+    <string name="notes">Notes</string>
+    <string name="notes_optional">Notes (Optional)</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="select_date">Select Date</string>
+    <string name="recurring_transaction">Recurring Transaction</string>
+    <string name="auto_categorize">Auto</string>
+    <string name="total_income">Total Income</string>
+    <string name="total_expenses">Total Expenses</string>
+    <string name="no_transactions_yet">No transactions yet</string>
+    <string name="tap_plus_to_add">Tap the + button to add your first transaction</string>
+    
+    <!-- Categories -->
+    <string name="food_dining">Food &amp; Dining</string>
+    <string name="transportation">Transportation</string>
+    <string name="entertainment">Entertainment</string>
+    <string name="shopping">Shopping</string>
+    <string name="healthcare">Healthcare</string>
+    <string name="housing">Housing</string>
+    <string name="bills_utilities">Bills &amp; Utilities</string>
+    <string name="education">Education</string>
+    <string name="travel">Travel</string>
+    <string name="personal_care">Personal Care</string>
+    <string name="gifts">Gifts</string>
+    <string name="other">Other</string>
+    
+    <!-- Transaction Types -->
+    <string name="income">Income</string>
+    <string name="expense">Expense</string>
+    <string name="transfer">Transfer</string>
+    
+    <!-- Budget -->
+    <string name="add_budget">Add Budget</string>
+    <string name="edit_budget">Edit Budget</string>
+    <string name="budget_amount">Budget Amount</string>
+    <string name="budget_period">Budget Period</string>
+    <string name="weekly">Weekly</string>
+    <string name="monthly">Monthly</string>
+    <string name="quarterly">Quarterly</string>
+    <string name="yearly">Yearly</string>
+    <string name="spent_format">Spent: $%.2f</string>
+    <string name="remaining_format">Remaining: $%.2f</string>
+    <string name="over_budget_format">Over by: $%.2f</string>
+    
+    <!-- Analytics -->
+    <string name="quick_stats">📊 Quick Stats</string>
+    <string name="top_category">Top Category</string>
+    <string name="daily_average">Daily Average</string>
+    <string name="savings_rate">Savings Rate</string>
+    <string name="spending_by_category">Spending by Category</string>
+    <string name="monthly_spending_trend">Monthly Spending Trend</string>
+    <string name="spending_increasing">📈 Spending is increasing</string>
+    <string name="spending_decreasing">📉 Spending is decreasing</string>
+    <string name="spending_stable">➡️ Spending is stable</string>
+    <string name="no_data">No data</string>
+    
+    <!-- Settings -->
+    <string name="data_overview">📊 Data Overview</string>
+    <string name="backup_restore">Backup &amp; Restore</string>
+    <string name="backup_restore_desc">Secure backup of your financial data</string>
+    <string name="create_backup">Create Backup</string>
+    <string name="restore_backup">Restore Backup</string>
+    <string name="security">Security</string>
+    <string name="security_desc">Biometric authentication &amp; encryption</string>
+    <string name="enable_biometric">Enable Biometric Authentication</string>
+    <string name="theme">Theme</string>
+    <string name="light_theme">Light</string>
+    <string name="dark_theme">Dark</string>
+    <string name="system_theme">System Default</string>
+    <string name="choose_theme">Choose Theme</string>
+    <string name="export_data">Export Data</string>
+    <string name="export_data_desc">Export transactions to CSV</string>
+    <string name="about">About</string>
+    <string name="about_desc">App version &amp; information</string>
+    <string name="about_title">About BudgetWise</string>
+    <string name="about_message">BudgetWise v1.0\n\nA secure, offline personal finance manager with AI-powered insights.\n\n• AES-256 encryption\n• Local ML intelligence\n• Premium Material 3 UI\n• Zero data collection</string>
+    <string name="danger_zone">⚠️ Danger Zone</string>
+    <string name="clear_all_data">Clear All Data</string>
+    <string name="clear_data_desc">Permanently delete all transactions and budgets</string>
+    <string name="clear_data_warning">This will permanently delete all your transactions, budgets, and settings. This action cannot be undone.</string>
+    <string name="clear">Clear</string>
+    <string name="transaction_count_format">%d transactions</string>
+    <string name="budget_count_format">%d budgets</string>
+    <string name="data_size_format">%.1f KB</string>
+    
+    <!-- Notifications -->
+    <string name="budget_alert">Budget Alert</string>
+    <string name="over_budget">You\'ve exceeded your budget</string>
+    <string name="approaching_budget">You\'re approaching your budget limit</string>
+    <string name="backup_reminder">Backup Reminder</string>
+    <string name="backup_reminder_message">Don\'t forget to backup your financial data</string>
+    
+    <!-- Biometric Authentication -->
+    <string name="biometric_title">Authenticate to access BudgetWise</string>
+    <string name="biometric_subtitle">Use your fingerprint or face to unlock</string>
+    <string name="biometric_not_available">Biometric authentication not available</string>
+    <string name="authentication_failed">Authentication failed</string>
+    
+    <!-- Errors -->
+    <string name="error_invalid_amount">Please enter a valid amount</string>
+    <string name="error_empty_description">Description cannot be empty</string>
+    <string name="error_amount_required">Amount is required</string>
+    <string name="error_amount_positive">Amount must be greater than 0</string>
+    <string name="error_backup_failed">Backup creation failed</string>
+    <string name="error_restore_failed">Backup restore failed</string>
+    <string name="error_encryption_failed">Data encryption failed</string>
+    <string name="error_file_not_found">Backup file not found</string>
+    <string name="error_invalid_backup">Invalid backup file format</string>
+    
+    <!-- Success Messages -->
+    <string name="backup_created_success">Backup created successfully</string>
+    <string name="backup_restored_success">Backup restored successfully</string>
+    <string name="transaction_saved">Transaction saved</string>
+    <string name="transaction_deleted">Transaction deleted</string>
+    <string name="budget_saved">Budget saved</string>
+    <string name="budget_deleted">Budget deleted</string>
+    <string name="category_suggested">Category suggested: %s</string>
+    
+    <!-- Content Descriptions -->
+    <string name="add_transaction_fab">Add Transaction</string>
+    <string name="recurring_indicator">Recurring transaction</string>
+    <string name="category_indicator">Category indicator</string>
+    
+    <!-- Formats -->
+    <string name="currency_format">$%.2f</string>
+    <string name="currency_positive_format">+$%.2f</string>
+    <string name="currency_negative_format">-$%.2f</string>
+    <string name="percentage_format">%.1f%%</string>
+    <string name="date_format">MMM dd, yyyy</string>
+    <string name="date_short_format">MMM dd</string>
+    
+    <!-- Empty States -->
+    <string name="empty_transactions">💰</string>
+    <string name="empty_budgets">📊</string>
+    <string name="empty_analytics">📈</string>
+    
+    <!-- Insights -->
+    <string name="insight_top_category">Your highest spending category this month is %1$s ($%2$.2f)</string>
+    <string name="insight_category_percentage">%1$s represents %2$.1f%% of your spending. Consider reviewing this category.</string>
+    <string name="insight_spending_trend">Your spending has %1$s by %2$.1f%% compared to last week</string>
+    <string name="insight_budget_exceeded">⚠️ You\'ve exceeded your %1$s budget by $%2$.2f</string>
+    <string name="insight_budget_warning">⚠️ You\'ve used %1$.1f%% of your %2$s budget</string>
+    <string name="insight_budget_info">You\'ve used %1$.1f%% of your %2$s budget</string>
+    <string name="insight_large_expense">Large expense detected: $%1$.2f for %2$s</string>
+    <string name="insight_budget_suggestion">Consider setting a budget of $%1$.2f for %2$s</string>
+    
+    <!-- Accessibility -->
+    <string name="accessibility_balance_card">Balance overview card</string>
+    <string name="accessibility_budget_progress">Budget progress for %s</string>
+    <string name="accessibility_transaction_item">Transaction: %s</string>
+    <string name="accessibility_chart">Spending chart</string>
+    
+    <!-- AI Features -->
+    <string name="ai_intelligence_settings">AI Intelligence Settings</string>
+    <string name="ai_notifications">AI Notifications</string>
+    <string name="budget_alerts">Budget Alerts</string>
+    <string name="weekly_summaries">Weekly Summaries</string>
+    <string name="goal_recommendations">Goal Recommendations</string>
+    <string name="anomaly_detection">Anomaly Detection</string>
+    <string name="run_ai_analysis">Run AI Analysis</string>
+    <string name="duplicate_detected">Duplicate Transaction Detected</string>
+    <string name="rapid_spending_detected">Rapid Spending Detected</string>
+    <string name="unusual_transaction">Unusual Transaction Detected</string>
+    <string name="recurring_pattern">Recurring Transaction Detected</string>
+    <string name="budget_efficiency_warning">Budget Efficiency Warning</string>
+    <string name="savings_goal_opportunity">Savings Goal Opportunity</string>
+    <string name="weekly_financial_summary">Weekly Financial Summary</string>
+</resources>

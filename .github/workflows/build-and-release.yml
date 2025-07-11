@@ -1,0 +1,210 @@
+name: Build and Release Android APK
+
+on:
+  push:
+    tags:
+      - 'v*'  # Triggers on version tags like v1.0.0, v2.1.0, etc.
+  workflow_dispatch:  # Allows manual trigger from GitHub Actions tab
+    inputs:
+      release_name:
+        description: 'Release name (e.g., v1.0.0)'
+        required: true
+        default: 'v1.0.0'
+      release_notes:
+        description: 'Release notes'
+        required: false
+        default: 'New release with bug fixes and improvements'
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Fetch all history for proper versioning
+    
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: gradle
+    
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v3
+      with:
+        api-level: 34
+        build-tools: 34.0.0
+        cmake: 3.22.1
+        ndk: 25.1.8937393
+    
+    - name: Cache Gradle packages
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.gradle/caches
+          ~/.gradle/wrapper
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+        restore-keys: |
+          ${{ runner.os }}-gradle-
+    
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+    
+    - name: Create local.properties
+      run: |
+        echo "sdk.dir=$ANDROID_HOME" > local.properties
+        echo "ndk.dir=$ANDROID_HOME/ndk/25.1.8937393" >> local.properties
+    
+    - name: Clean Project
+      run: ./gradlew clean
+    
+    - name: Build Debug APK
+      run: ./gradlew assembleDebug
+      env:
+        GRADLE_OPTS: -Dorg.gradle.daemon=false
+    
+    - name: Build Release APK
+      run: ./gradlew assembleRelease
+      env:
+        GRADLE_OPTS: -Dorg.gradle.daemon=false
+    
+    - name: Sign Release APK
+      uses: r0adkll/sign-android-release@v1
+      id: sign_app
+      with:
+        releaseDirectory: app/build/outputs/apk/release
+        signingKeyBase64: ${{ secrets.SIGNING_KEY }}
+        alias: ${{ secrets.ALIAS }}
+        keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+        keyPassword: ${{ secrets.KEY_PASSWORD }}
+      env:
+        BUILD_TOOLS_VERSION: "34.0.0"
+    
+    - name: Rename APK files
+      run: |
+        # Get version from build.gradle
+        VERSION_NAME=$(grep -oP 'versionName\s+"\K[^"]+' app/build.gradle)
+        VERSION_CODE=$(grep -oP 'versionCode\s+\K\d+' app/build.gradle)
+        
+        # Create release directory
+        mkdir -p release-files
+        
+        # Copy and rename APKs
+        cp app/build/outputs/apk/debug/app-debug.apk release-files/BudgetWise-v${VERSION_NAME}-debug.apk
+        
+        # Copy signed release APK if signing was successful
+        if [ -f "${{ steps.sign_app.outputs.signedReleaseFile }}" ]; then
+          cp "${{ steps.sign_app.outputs.signedReleaseFile }}" release-files/BudgetWise-v${VERSION_NAME}-release-signed.apk
+        else
+          cp app/build/outputs/apk/release/app-release-unsigned.apk release-files/BudgetWise-v${VERSION_NAME}-release-unsigned.apk
+        fi
+        
+        # Create build info
+        echo "Build Information" > release-files/BUILD_INFO.txt
+        echo "=================" >> release-files/BUILD_INFO.txt
+        echo "Version Name: ${VERSION_NAME}" >> release-files/BUILD_INFO.txt
+        echo "Version Code: ${VERSION_CODE}" >> release-files/BUILD_INFO.txt
+        echo "Build Date: $(date)" >> release-files/BUILD_INFO.txt
+        echo "Commit SHA: ${GITHUB_SHA}" >> release-files/BUILD_INFO.txt
+        echo "Branch: ${GITHUB_REF#refs/heads/}" >> release-files/BUILD_INFO.txt
+        
+        # Set environment variables for later steps
+        echo "VERSION_NAME=${VERSION_NAME}" >> $GITHUB_ENV
+        echo "VERSION_CODE=${VERSION_CODE}" >> $GITHUB_ENV
+    
+    - name: Generate Release Notes
+      id: release_notes
+      run: |
+        if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          RELEASE_NAME="${{ github.event.inputs.release_name }}"
+          RELEASE_NOTES="${{ github.event.inputs.release_notes }}"
+        else
+          RELEASE_NAME="${GITHUB_REF#refs/tags/}"
+          # Generate release notes from commits since last tag
+          LAST_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
+          if [ -n "$LAST_TAG" ]; then
+            RELEASE_NOTES="## Changes since ${LAST_TAG}
+        $(git log ${LAST_TAG}..HEAD --pretty=format:'- %s (%an)' --no-merges)"
+          else
+            RELEASE_NOTES="## Initial Release
+        - Complete BudgetWise Android application
+        - AI-powered financial insights
+        - Budget tracking and management
+        - Transaction categorization
+        - Spending analysis and forecasting"
+          fi
+        fi
+        
+        # Add build information to release notes
+        FULL_RELEASE_NOTES="${RELEASE_NOTES}
+
+        ## Build Information
+        - **Version**: ${VERSION_NAME} (${VERSION_CODE})
+        - **Build Date**: $(date)
+        - **Commit**: ${GITHUB_SHA:0:7}
+        
+        ## APK Files
+        - **Release APK**: BudgetWise-v${VERSION_NAME}-release-signed.apk (Recommended)
+        - **Debug APK**: BudgetWise-v${VERSION_NAME}-debug.apk (For testing)
+        
+        ## Installation Instructions
+        1. Download the release APK file
+        2. Enable 'Install from Unknown Sources' in Android settings
+        3. Install the APK file
+        4. Grant necessary permissions for full functionality
+        
+        ## Features
+        - 🤖 AI-powered financial insights
+        - 📊 Budget tracking and alerts
+        - 💰 Transaction management
+        - 📈 Spending analysis and forecasting
+        - 🔍 Duplicate transaction detection
+        - 📱 Modern Material Design UI"
+        
+        echo "RELEASE_NAME=${RELEASE_NAME}" >> $GITHUB_ENV
+        echo "RELEASE_NOTES<<EOF" >> $GITHUB_ENV
+        echo "${FULL_RELEASE_NOTES}" >> $GITHUB_ENV
+        echo "EOF" >> $GITHUB_ENV
+    
+    - name: Upload Build Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: BudgetWise-APKs-v${{ env.VERSION_NAME }}
+        path: release-files/
+        retention-days: 30
+    
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: ${{ env.RELEASE_NAME }}
+        name: BudgetWise ${{ env.RELEASE_NAME }}
+        body: ${{ env.RELEASE_NOTES }}
+        files: |
+          release-files/*.apk
+          release-files/BUILD_INFO.txt
+        draft: false
+        prerelease: false
+        generate_release_notes: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Upload to Release Assets
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: release-files/BUILD_INFO.txt
+        asset_name: BUILD_INFO.txt
+        asset_content_type: text/plain
+      continue-on-error: true
+    
+    - name: Notify Build Success
+      run: |
+        echo "✅ Build completed successfully!"
+        echo "📱 APK files have been uploaded to the release"
+        echo "🔗 Release URL: https://github.com/${{ github.repository }}/releases/tag/${{ env.RELEASE_NAME }}"
+        echo "📦 Artifacts are also available in the Actions tab"
